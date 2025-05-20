@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+  <Id value="DisableRandomColors" />
+  <Name value="DisableRandomColors" />
+  <Version value="v1.0.0.0" />
+  <ModuleCategory value="Singleplayer" />
+  <DependedModules>
+    <DependedModule Id="Native" />
+  </DependedModules>
+  <SubModules>
+    <SubModule>
+      <Name value="DisableRandomColors" />
+      <DLLName value="DisableRandomColors.dll" />
+      <SubModuleClassType value="DisableRandomColors.SubModule" />
+      <Tags />
+    </SubModule>
+  </SubModules>
+	<Xmls>
+	</Xmls>
+</Module>
