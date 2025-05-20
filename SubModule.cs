@@ -1,20 +1,24 @@
 ﻿using HarmonyLib;
 using System.Linq;
 using TaleWorlds.MountAndBlade;
-// Important: using static import forces the YSBCaptain assembly to be loaded during JIT. Without, patching will fail.
 using static DisableRandomColors.Utilities.Logger;
 
 namespace DisableRandomColors
 {
 	public class SubModule : MBSubModuleBase
 	{
+		Harmony Harmony;
+
 		protected override void OnSubModuleLoad()
 		{
 			base.OnSubModuleLoad();
+			Harmony = new Harmony("DisableRandomColors");
+			Harmony.PatchAll();
+		}
 
-			var harmony = new Harmony("DisableRandomColors");
-			harmony.PatchAll();
-			Log($"Applied {harmony.GetPatchedMethods().Count()} patches for DisableRandomColors", LogLevel.Information);
+		protected override void OnBeforeInitialModuleScreenSetAsRoot()
+		{
+			Log($"DisableRandomColors - Applied {Harmony.GetPatchedMethods().Count()} patches", LogLevel.Information);
 		}
 	}
 }
